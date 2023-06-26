@@ -27,7 +27,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
- db.student = require("./student.js")(sequelize, DataTypes);
+db.student = require("./student.js")(sequelize, DataTypes);
 // db.reviews = require("./reviewModel.js")(sequelize, DataTypes);
 
 // db.sequelize.sync({ force: false }).then(() => {

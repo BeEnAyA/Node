@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<title>Send Mail</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<script src="https://kit.fontawesome.com/2d2642681e.js" crossorigin="anonymous"></script>
+
+<body style="background-color: rgb(225, 231, 231)">
+    <div class="w3-container" style="margin-top: 50px">
+        <div class="w3-modal-content w3-animate-zoom w3-card-4 w3-padding w3-round" style="width: 40%">
+            <header class="w3-container w3-border-bottom w3-border-teal w3-center">
+                <h2>Login</h2>
+            </header>
+            <div class="w3-container w3-padding">
+                <form action="/sendEmail" method="POST">
+                    <div class="w3-container">
+                        <label><i class="fa-solid fa-message"></i> Message</label>
+                        <textarea class="w3-input w3-border w3-round" type="text" rows="6" name="message" value="" required ></textarea>
+                    </div>
+                    <br />
+
+                    <!-- <div class="w3-container">
+                        <label><i class="fa-solid fa-key"></i> Password</label>
+                        <input id="password" class="w3-input" type="password" name="password" value="" required />
+                    </div>
+                    <div class="w3-container w3-padding">
+                        <input class="w3-check" type="checkbox" onclick="passwordVisibility()" />
+                        <label for="check"> Show password</label>
+                    </div> -->
+
+                    <div class="w3-container w3-center">
+                        <button type="submit" class="w3-button w3-black w3-round w3-margin-top" required>
+                            Send
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

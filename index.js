@@ -27,6 +27,14 @@ app.get("/login", studentController.renderLogin);
 app.post("/login", studentController.loginStudent)
 
 
+app.get("/createEmail",studentController.renderEmail)
+
+app.post("/sendEmail",studentController.sendEmail)
+
+app.get("/forgotPassword",studentController.forgotPassword)
+app.get("/resetPassword",studentController.resetPassword)
+
+
 
 //starting the server
 app.listen(port, () => {

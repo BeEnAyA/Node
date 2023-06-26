@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+</head>
+
+<body style="background-color: #f2f2f2">
+  <div class="container my-4 p-4" style="
+        background-color: #fff;
+        width: 50%;
+        padding: 20px;
+        border: 1px solid rgb(95, 92, 92);
+        border-radius: 10px;
+        box-shadow: 10px 5px 5px rgb(146, 143, 143);
+      ">
+    <form action="/createblog" action="post" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input type="text" class="form-control" name="title" id="" placeholder="Title of the blog..." />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea class="form-control" name="description" rows="5" placeholder="Content here..."></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Image:</label>
+        <input class="form-control" type="file" name="image" />
+      </div>
+
+      <div class="d-grid gap-2 col-6 mx-auto mb-3">
+        <input type="button" class="btn btn-success" value="Post" />
+      </div>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
