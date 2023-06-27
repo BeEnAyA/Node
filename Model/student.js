@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       file: {
         type:DataTypes.STRING,
         allowNull:true,
+      },
+      otp:{
+        type:DataTypes.INTEGER,
+        allowNull:true,
       }
     });
     return Student;

@@ -23,21 +23,21 @@ exports.createStudent = async (req, res) => {
     file: req.file.filename,
   });
   console.log(created);
-  if(created){
+  if (created) {
     try {
-        const message = "You have successfully registered.";
-    
-        await sendEmail({
-          to: req.body.email,
-          text: message,
-          subject: "Registration Successful",
-        });
-      } catch(e) {
-        console.log("error sending mail");
-        res.render("error");
-      }
+      const message = "You have successfully registered.";
+
+      await sendEmail({
+        to: req.body.email,
+        text: message,
+        subject: "Registration Successful",
+      });
+    } catch (e) {
+      console.log("error sending mail");
+      res.render("error");
+    }
   }
- 
+
   //redirecting to another page
   res.redirect("/login");
 };
@@ -92,12 +92,65 @@ exports.sendEmail = async (req, res) => {
   }
 };
 
-
-exports.forgotPassword=async(req,res)=>{
-    res.render('forgotPassword')
-
+exports.forgotPassword = async (req, res) => {
+  res.render("forgotPassword");
 };
-exports.resetPassword=async(req,res)=>{
-    res.render('resetPassword')
 
+exports.verifyEmail = async (req, res) => {
+  const email = req.body.email;
+  const isPresent = await Student.findAll({
+    where: {
+      email: email,
+    },
+  });
+  // console.log(isPresent.length==0);
+
+  if (isPresent == 0) {
+    console.log("Email is not present.");
+    res.redirect("/forgotPassword");
+    return;
+  } else {
+    console.log("Email found.");
+    try {
+      const OTP = Math.floor(100000 + Math.random() * 900000);
+      const message = "Your OTP is " + OTP + ".";
+
+      await sendEmail({
+        to: email,
+        text: message,
+        subject: "Reset Password",
+      });
+
+      isPresent[0].otp = OTP;
+      await isPresent[0].save();
+      res.render("resetPassword");
+    } catch (e) {
+      console.log("Error sending mail");
+      console.log(e.message);
+      res.render("error");
+    }
+  }
+};
+exports.resetPassword = async (req, res) => {
+  const { otp, newPassword } = req.body;
+
+  const encPassword=bcrypt.hashSync(newPassword, 10)
+
+  const verifyOTP = await Student.findAll({
+    where: {
+      otp: otp,
+    },
+  });
+
+  if (verifyOTP.length != 0) {
+    verifyOTP[0].password=encPassword
+    verifyOTP[0].otp=null
+    await verifyOTP[0].save()
+
+    console.log("Password Updated Succesfully.") 
+    res.redirect('/login') 
+  } else {
+    console.log("Your OTP is wrong.");
+    res.render("resetPassword");
+  }
 };

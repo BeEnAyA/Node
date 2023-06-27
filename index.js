@@ -32,7 +32,11 @@ app.get("/createEmail",studentController.renderEmail)
 app.post("/sendEmail",studentController.sendEmail)
 
 app.get("/forgotPassword",studentController.forgotPassword)
-app.get("/resetPassword",studentController.resetPassword)
+
+app.post("/verifyEmail",studentController.verifyEmail)
+
+app.post("/resetPassword",studentController.resetPassword)
+
 
 
 
